@@ -1,26 +1,27 @@
 {
   "name": "@lukkas98/icons",
-  "version": "1.1.0",
-  "description": "Iconos para proyectos libres de licencias",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "version": "2.0.0",
+  "description": "Iconos SVG como componentes React",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
   "author": "lukkas98",
+  "license": "MIT",
   "files": [
-    "icons",
-    "index.js",
-    "index.d.ts",
-    "README.md"
+    "dist",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_LICENSES.md"
   ],
   "scripts": {
-    "build": "node generateExports.js"
+    "build": "tsc"
   },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+  "peerDependencies": {
+    "react": ">=19"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "typescript": "^5.5.4"
+    "@types/react": ">=19",
+    "typescript": "^5.9.3"
   }
 }
