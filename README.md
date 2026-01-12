@@ -11,6 +11,7 @@ Iconos SVG como **componentes React**, pensados para **uso personal** en mis pro
 - 🌳 **Tree-shaking** (solo se incluye lo que usás)
 - 🧠 Tipados con TypeScript (`SVGProps<SVGSVGElement>`)
 - 📦 Pensado para proyectos con **React / Next.js**
+- 📂 Organización por dominios (`ui`, `brands`)
 
 ---
 
@@ -27,7 +28,7 @@ pnpm add @lukkas98/icons
 ## 🚀 Uso básico
 
 ```tsx
-import { ReactIcon, JavascriptIcon } from "@lukkas98/icons";
+import { IconArrowBadgeDown, JavascriptIcon } from "@lukkas98/icons";
 
 export function Example() {
   return (
@@ -39,12 +40,18 @@ export function Example() {
 }
 ```
 
+Tambien se permiten exportaciones por UI o brands
+
+```tsx
+import { IconArrowBadgeDown } from "@lukkas98/icons/ui";
+import { JavascriptIcon } from "@lukkas98/icons/brands";
+```
+
 Todos los iconos aceptan:
 
 - `className`
 - `style`
 - `onClick`
-- `aria-*`
 - cualquier `SVGProps<SVGSVGElement>`
 
 ---
@@ -54,9 +61,15 @@ Todos los iconos aceptan:
 ```txt
 src/
 ├─ icons/
-│  ├─ brands.tsx   # Tecnologías, herramientas, logos
-│  ├─ ui.tsx       # Iconos genéricos de interfaz
-│  └─ index.ts
+│  ├─ ui/
+│  │  ├─ IconArrowBadgeDown.tsx
+│  │  ├─ ...
+│  │  └─ index.ts
+│  ├─ brands/
+│  │  ├─ IconReact.tsx
+│  │  ├─ ...
+│  │  └─ index.ts
+│  └─ generateIndex.ts
 └─ index.ts
 ```
 
@@ -88,11 +101,11 @@ Iconos genéricos reutilizables en interfaces:
 
 ## 🎨 Colores
 
-Algunos iconos usan **colores propios** (logos).
-Otros usan `currentColor` y responden a:
+Los iconos de marcas mantienen sus **colores originales**,
+Los iconos de UI usan `currentColor`
 
 ```tsx
-className = "text-sky-500";
+<IconArrowBadgeDown className="text-emerald-500" />
 ```
 
 Esto es intencional.
@@ -102,13 +115,14 @@ Esto es intencional.
 ## 🛠 Build
 
 ```bash
-npm build
+pnpm build
 ```
 
-Genera la carpeta `dist/` con:
+Esto ejecuta
 
-- JavaScript compilado
-- declaraciones `.d.ts`
+- Generación automática de `index.ts`
+- Compilación de TypeScript
+- Salida final en `dist/`
 
 ---
 
@@ -117,6 +131,14 @@ Genera la carpeta `dist/` con:
 - Este paquete está pensado para **uso personal**.
 - La API puede cambiar sin previo aviso.
 - No busca competir con librerías públicas de iconos.
+
+---
+
+## 📜 Licencias
+
+- El código del paquete: MIT
+- Los iconos pertenecen a sus respectivos autores
+- Ver [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)
 
 ---
 

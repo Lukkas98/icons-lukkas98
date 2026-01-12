@@ -1,1 +1,2 @@
-export * from "./icons";
+export * from "./icons/brands";
+export * from "./icons/ui";
