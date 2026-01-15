@@ -1,2 +1,2 @@
-export * from "./icons/brands";
-export * from "./icons/ui";
+export * from "./components/brands";
+export * from "./components/ui";

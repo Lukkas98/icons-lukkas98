@@ -1,0 +1,2 @@
+import type { IconProps } from "../../types";
+export const IconVercel = (props: IconProps) => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1em" height="1em" {...props}><g fill="none"><rect width={256} height={256} rx={60} /><path fill="#000" d="m128 34 95 164.853H33z" /></g></svg>;

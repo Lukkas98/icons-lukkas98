@@ -28,13 +28,13 @@ pnpm add @lukkas98/icons
 ## 🚀 Uso básico
 
 ```tsx
-import { IconArrowBadgeDown, JavascriptIcon } from "@lukkas98/icons";
+import { IconArrowBadgeDown, IconJavascript } from "@lukkas98/icons";
 
 export function Example() {
   return (
     <div className="flex gap-4">
-      <ReactIcon className="w-8 h-8 text-cyan-400" />
-      <JavascriptIcon className="w-8 h-8" />
+      <IconArrowBadgeDown className="w-8 h-8 text-cyan-400" />
+      <IconJavascript className="w-8 h-8" />
     </div>
   );
 }
@@ -44,7 +44,7 @@ Tambien se permiten exportaciones por UI o brands
 
 ```tsx
 import { IconArrowBadgeDown } from "@lukkas98/icons/ui";
-import { JavascriptIcon } from "@lukkas98/icons/brands";
+import { IconJavascript } from "@lukkas98/icons/brands";
 ```
 
 Todos los iconos aceptan:
@@ -60,42 +60,11 @@ Todos los iconos aceptan:
 
 ```txt
 src/
-├─ icons/
-│  ├─ ui/
-│  │  ├─ IconArrowBadgeDown.tsx
-│  │  ├─ ...
-│  │  └─ index.ts
-│  ├─ brands/
-│  │  ├─ IconReact.tsx
-│  │  ├─ ...
-│  │  └─ index.ts
-│  └─ generateIndex.ts
-└─ index.ts
+├─ raw-icons/    # SVGs originales (Fuentes)
+├─ components/   # Componentes generados (No editar)
+├─ scripts/      # Automatización (SVGR + Index gen)
+└─ types.ts      # Definición de IconProps
 ```
-
-### `brands`
-
-Iconos de tecnologías, frameworks y herramientas:
-
-- JavaScript
-- React
-- Next.js
-- Node.js
-- MongoDB
-- PostgreSQL
-- Tailwind
-- Git
-- npm / pnpm
-- etc.
-
-### `ui`
-
-Iconos genéricos reutilizables en interfaces:
-
-- arrows
-- check / close
-- menu
-- search
 
 ---
 
@@ -106,6 +75,8 @@ Los iconos de UI usan `currentColor`
 
 ```tsx
 <IconArrowBadgeDown className="text-emerald-500" />
+// o
+<IconArrowBadgeDown color="#10b981" />
 ```
 
 Esto es intencional.
@@ -115,12 +86,12 @@ Esto es intencional.
 ## 🛠 Build
 
 ```bash
-pnpm build
+npm build
 ```
 
 Esto ejecuta
 
-- Generación automática de `index.ts`
+- Generación automática de los componentes e índices
 - Compilación de TypeScript
 - Salida final en `dist/`
 
@@ -136,7 +107,7 @@ Esto ejecuta
 
 ## 📜 Licencias
 
-- El código del paquete: MIT
+- Licencia: MIT
 - Los iconos pertenecen a sus respectivos autores
 - Ver [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)
 

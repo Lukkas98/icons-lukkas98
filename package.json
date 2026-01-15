@@ -1,6 +1,6 @@
 {
   "name": "@lukkas98/icons",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "Iconos SVG como componentes React",
   "type": "module",
   "main": "dist/index.js",
@@ -21,12 +21,12 @@
       "import": "./dist/index.js"
     },
     "./ui": {
-      "types": "./dist/icons/ui/index.d.ts",
-      "import": "./dist/icons/ui/index.js"
+      "types": "./dist/components/ui/index.d.ts",
+      "import": "./dist/components/ui/index.js"
     },
     "./brands": {
-      "types": "./dist/icons/brands/index.d.ts",
-      "import": "./dist/icons/brands/index.js"
+      "types": "./dist/components/brands/index.d.ts",
+      "import": "./dist/components/brands/index.js"
     }
   },
   "scripts": {

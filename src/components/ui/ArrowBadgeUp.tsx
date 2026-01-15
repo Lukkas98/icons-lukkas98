@@ -1,0 +1,2 @@
+import type { IconProps } from "../../types";
+export const IconArrowBadgeUp = (props: IconProps) => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" {...props}><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 11v6l-5-4-5 4v-6l5-4z" /></svg>;
