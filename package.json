@@ -42,5 +42,9 @@
     "@svgr/plugin-svgo": "^8.1.0",
     "@types/react": ">=19",
     "typescript": "^5.9.3"
+  },
+  "repository": {
+    "url": "git+https://github.com/Lukkas98/icons-lukkas98.git",
+    "type": "git"
   }
 }
