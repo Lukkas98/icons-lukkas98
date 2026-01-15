@@ -15,7 +15,7 @@ Original authors retain all copyrights to their respective works.
 Some SVG icons are sourced from the following projects:
 
 - Iconify Icon Sets — https://icon-sets.iconify.design/
-- Xandemon Icons — https://xandemon.github.io/
+- Xandemon Icons — https://xandemon.github.io/developer-icons/
 
 Each icon set remains the property of its respective authors and follows
 its original license terms.
