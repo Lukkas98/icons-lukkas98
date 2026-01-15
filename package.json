@@ -1,9 +1,10 @@
 {
   "name": "@lukkas98/icons",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Iconos SVG como componentes React",
   "type": "module",
   "main": "dist/index.js",
+  "module": "./dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "author": "lukkas98",
@@ -29,13 +30,16 @@
     }
   },
   "scripts": {
-    "generateIndex": "node ./src/icons/generateIndex.js",
-    "build": "pnpm generateIndex && tsc"
+    "build:icons": "node src/scripts/buildIcons.js && node src/scripts/generateIndex.js && tsc"
   },
   "peerDependencies": {
     "react": ">=19"
   },
   "devDependencies": {
+    "@svgr/cli": "^8.1.0",
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@svgr/plugin-svgo": "^8.1.0",
     "@types/react": ">=19",
     "typescript": "^5.9.3"
   }
