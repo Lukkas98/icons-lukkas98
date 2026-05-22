@@ -1,120 +1,48 @@
 # @lukkas98/icons
 
-Iconos SVG como **componentes React**, pensados para **uso personal** en mis proyectos y portfolio.
+Iconos SVG como componentes React.
 
----
-
-## ✨ Características
-
-- 🧩 Iconos como **componentes React** (`.tsx`)
-- 🎨 Compatibles con **Tailwind CSS** (`className`, `w-*`, `h-*`, `text-*`)
-- 🌳 **Tree-shaking** (solo se incluye lo que usás)
-- 🧠 Tipados con TypeScript (`SVGProps<SVGSVGElement>`)
-- 📦 Pensado para proyectos con **React / Next.js**
-- 📂 Organización por dominios (`ui`, `brands`)
-
----
-
-## 📦 Instalación
+## Instalación
 
 ```bash
-npm install @lukkas98/icons
-# o
 pnpm add @lukkas98/icons
 ```
 
----
-
-## 🚀 Uso básico
+## Uso
 
 ```tsx
-import { IconArrowBadgeDown, IconJavascript } from "@lukkas98/icons";
+import { IconArrowBadgeDown, IconReact } from "@lukkas98/icons";
 
 export function Example() {
   return (
-    <div className="flex gap-4">
-      <IconArrowBadgeDown className="w-8 h-8 text-cyan-400" />
-      <IconJavascript className="w-8 h-8" />
-    </div>
+    <>
+      <IconArrowBadgeDown size={24} />
+      <IconReact size={32} />
+    </>
   );
 }
 ```
 
-Tambien se permiten exportaciones por UI o brands
+También se pueden importar por categoría:
 
 ```tsx
 import { IconArrowBadgeDown } from "@lukkas98/icons/ui";
-import { IconJavascript } from "@lukkas98/icons/brands";
+import { IconReact } from "@lukkas98/icons/brands";
 ```
 
-Todos los iconos aceptan:
+## Iconos disponibles
 
-- `className`
-- `style`
-- `onClick`
-- cualquier `SVGProps<SVGSVGElement>`
+**UI:** `IconArrowBadgeDown`, `IconArrowBadgeUp`, `IconArrowBadgeLeft`, `IconArrowBadgeRight`
 
----
+**Marcas:** `IconCss`, `IconExpressjs`, `IconFramerMotion`, `IconGit`, `IconGithub`, `IconHtml`, `IconJavascript`, `IconLinkedin`, `IconMongodb`, `IconMongoose`, `IconNetlify`, `IconNextjs`, `IconNodejs`, `IconNpm`, `IconPnpm`, `IconPostgresql`, `IconReact`, `IconReactRouter`, `IconRedux`, `IconSequelize`, `IconTailwindcss`, `IconTypescript`, `IconVercel`, `IconZod`
 
-## 📁 Estructura
-
-```txt
-src/
-├─ raw-icons/    # SVGs originales (Fuentes)
-├─ components/   # Componentes generados (No editar)
-├─ scripts/      # Automatización (SVGR + Index gen)
-└─ types.ts      # Definición de IconProps
-```
-
----
-
-## 🎨 Colores
-
-Los iconos de marcas mantienen sus **colores originales**,
-Los iconos de UI usan `currentColor`
-
-```tsx
-<IconArrowBadgeDown className="text-emerald-500" />
-// o
-<IconArrowBadgeDown color="#10b981" />
-```
-
-Esto es intencional.
-
----
-
-## 🛠 Build
+## Desarrollo y build
 
 ```bash
-npm build
+pnpm install
+pnpm build
+pnpm test
+pnpm storybook
 ```
 
-Esto ejecuta
-
-- Generación automática de los componentes e índices
-- Compilación de TypeScript
-- Salida final en `dist/`
-
----
-
-## 📌 Notas
-
-- Este paquete está pensado para **uso personal**.
-- La API puede cambiar sin previo aviso.
-- No busca competir con librerías públicas de iconos.
-
----
-
-## 📜 Licencias
-
-- Licencia: MIT
-- Los iconos pertenecen a sus respectivos autores
-- Ver [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)
-
----
-
-## 🧑‍💻 Autor
-
-Hecho por **lukkas98**.
-
-Para proyectos propios, aprendizaje y portfolio.
+Los SVG originales están en `src/raw-icons/`. Los componentes se generan automáticamente y no hace falta versionar `src/components/`.

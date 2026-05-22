@@ -30,18 +30,43 @@
     }
   },
   "scripts": {
-    "build:icons": "node src/scripts/buildIcons.js && node src/scripts/generateIndex.js && tsc"
+    "build": "npm run build:icons",
+    "build:icons": "node src/scripts/buildIcons.js && node src/scripts/generateIndex.js && tsc",
+    "dev": "node --watch src/scripts/buildIcons.js",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write src",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
   },
   "peerDependencies": {
     "react": ">=19"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@svgr/cli": "^8.1.0",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",
+    "@testing-library/react": "^16.3.2",
+    "@types/eslint": "^9.6.1",
     "@types/react": ">=19",
-    "typescript": "^5.9.3"
+    "@typescript-eslint/eslint-plugin": "^8.59.4",
+    "@typescript-eslint/parser": "^8.59.4",
+    "eslint": "^10.4.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "husky": "^9.1.7",
+    "jsdom": "^29.1.1",
+    "lint-staged": "^17.0.5",
+    "prettier": "^3.8.3",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.7"
   },
   "repository": {
     "url": "git+https://github.com/Lukkas98/icons-lukkas98.git",

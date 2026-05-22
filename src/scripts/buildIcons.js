@@ -20,45 +20,63 @@ const CONFIG = {
 
 async function processIcons(type) {
   const { input, output, replaceColor } = CONFIG[type];
+
+  // Validar que la carpeta input existe
+  try {
+    await fs.access(input);
+  } catch {
+    throw new Error(`❌ Input folder not found: ${input}`);
+  }
+
   await fs.mkdir(output, { recursive: true });
 
   const files = await fs.readdir(input);
   const svgFiles = files.filter((f) => f.endsWith(".svg"));
 
+  if (svgFiles.length === 0) {
+    console.warn(`⚠️  No SVG files found in ${input}`);
+    return;
+  }
+
   for (const file of svgFiles) {
-    const svgCode = await fs.readFile(path.join(input, file), "utf-8");
+    try {
+      const svgCode = await fs.readFile(path.join(input, file), "utf-8");
 
-    const baseName = file
-      .replace(".svg", "")
-      .split(/[-_]/)
-      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-      .join("");
+      const baseName = file
+        .replace(".svg", "")
+        .split(/[-_]/)
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+        .join("");
 
-    const finalName = `Icon${baseName}`;
+      const finalName = `Icon${baseName}`;
 
-    const jsCode = await transform(
-      svgCode,
-      {
-        typescript: true,
-        icon: true,
-        expandProps: "end",
-        template: (variables, { tpl }) => {
-          return tpl`
-            import type { IconProps } from "../../types";
+      const jsCode = await transform(
+        svgCode,
+        {
+          typescript: true,
+          icon: true,
+          expandProps: "end",
+          template: (variables, { tpl }) => {
+            return tpl`
+              import type { IconProps } from "../../types";
 
-            export const ${finalName} = (props: IconProps) => (
-              ${variables.jsx}
-            );
-          `;
+              export const ${finalName} = (props: IconProps) => (
+                ${variables.jsx}
+              );
+            `;
+          },
+          replaceAttrValues: replaceColor ? { "#292D32": "currentColor" } : {},
+          plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
         },
-        replaceAttrValues: replaceColor ? { "#292D32": "currentColor" } : {},
-        plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
-      },
-      { componentName: baseName }
-    );
+        { componentName: baseName }
+      );
 
-    await fs.writeFile(path.join(output, `${baseName}.tsx`), jsCode);
-    console.log(`✅ ${finalName} generado`);
+      await fs.writeFile(path.join(output, `${baseName}.tsx`), jsCode);
+      console.log(`✅ ${finalName} generado`);
+    } catch (err) {
+      console.error(`❌ Error procesando ${file}:`, err.message);
+      throw err;
+    }
   }
 }
 
@@ -67,9 +85,10 @@ async function run() {
     console.log("🚀 Generando iconos...");
     await processIcons("ui");
     await processIcons("brands");
-    console.log("✨ ¡componentes creados!");
+    console.log("✨ ¡Componentes creados exitosamente!");
   } catch (err) {
-    console.error("❌ Error:", err);
+    console.error("❌ Error:", err.message);
+    process.exit(1);
   }
 }
 
