@@ -1,6 +1,10 @@
 {
   "name": "@lukkas98/icons",
   "version": "3.0.0",
+  "packageManager": "pnpm@12.8.1",
+  "engines": {
+    "node": ">=22.13.0"
+  },
   "description": "Iconos SVG como componentes React",
   "type": "module",
   "main": "dist/index.js",
@@ -30,19 +34,18 @@
     }
   },
   "scripts": {
-    "build": "pnpm run build:icons",
-    "build:icons": "node --input-type=module -e \"import { rm } from 'node:fs/promises'; await rm('dist', { recursive: true, force: true })\" && pnpm run icons:generate && tsc",
-    "icons:generate": "node src/scripts/buildIcons.js && node src/scripts/generateIndex.js",
-    "dev": "pnpm run icons:generate && node --watch src/scripts/buildIcons.js",
+    "prepare": "husky",
+    "generate": "node src/scripts/buildIcons.js && node src/scripts/generateIndex.js",
+    "build": "node --input-type=module -e \"import { rm } from 'node:fs/promises'; await rm('dist', { recursive: true, force: true })\" && tsc",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write src",
-    "storybook": "pnpm run icons:generate && storybook dev -p 6006",
-    "storybook:build": "pnpm run icons:generate && storybook build",
-    "test": "pnpm run icons:generate && vitest",
-    "test:watch": "pnpm run icons:generate && vitest --watch",
-    "test:ui": "pnpm run icons:generate && vitest --ui",
-    "test:coverage": "pnpm run icons:generate && vitest --coverage"
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
   },
   "peerDependencies": {
     "react": ">=19"
@@ -81,5 +84,9 @@
   "repository": {
     "url": "git+https://github.com/Lukkas98/icons-lukkas98.git",
     "type": "git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

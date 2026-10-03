@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
+import { useState, type ComponentType } from "react";
 import * as UIIcons from "../components/ui";
 import type { IconProps } from "../types";
 
@@ -19,7 +19,7 @@ const IconGrid = () => {
 
   const icons = Object.entries(UIIcons).map(([name, Component]) => ({
     name,
-    Component: Component as React.ComponentType<IconProps>,
+    Component: Component as ComponentType<IconProps>,
   }));
 
   return (

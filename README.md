@@ -38,11 +38,15 @@ import { IconReact } from "@lukkas98/icons/brands";
 
 ## Desarrollo y build
 
+Requiere Node.js 22.13 o superior y pnpm 12.8.1.
+
 ```bash
 pnpm install
-pnpm build
+pnpm generate
+pnpm lint
 pnpm test
+pnpm build
 pnpm storybook
 ```
 
-Los SVG originales están en `src/raw-icons/`. Los componentes se generan automáticamente y no hace falta versionar `src/components/`.
+Los SVG originales de `src/raw-icons/` son la fuente de verdad. Ejecutá `pnpm generate` para crear los componentes en `src/components/` antes de lint, test, build o Storybook. Esa carpeta es generada y no se versiona.

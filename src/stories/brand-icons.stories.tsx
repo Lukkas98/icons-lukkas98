@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
+import { useState, type ComponentType } from "react";
 import * as BrandIcons from "../components/brands";
 import type { IconProps } from "../types";
 
@@ -18,7 +18,7 @@ const BrandIconGrid = () => {
 
   const icons = Object.entries(BrandIcons).map(([name, Component]) => ({
     name,
-    Component: Component as React.ComponentType<IconProps>,
+    Component: Component as ComponentType<IconProps>,
   }));
 
   return (
@@ -129,27 +129,39 @@ export const PopularBrands: StoryObj = {
         borderRadius: "8px",
       }}
     >
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
+      <div
+        style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}
+      >
         <BrandIcons.IconReact size={48} />
         <span style={{ fontSize: "0.75rem" }}>React</span>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
+      <div
+        style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}
+      >
         <BrandIcons.IconTypescript size={48} />
         <span style={{ fontSize: "0.75rem" }}>TypeScript</span>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
+      <div
+        style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}
+      >
         <BrandIcons.IconNextjs size={48} />
         <span style={{ fontSize: "0.75rem" }}>Next.js</span>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
+      <div
+        style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}
+      >
         <BrandIcons.IconNodejs size={48} />
         <span style={{ fontSize: "0.75rem" }}>Node.js</span>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
+      <div
+        style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}
+      >
         <BrandIcons.IconTailwindcss size={48} />
         <span style={{ fontSize: "0.75rem" }}>Tailwind</span>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
+      <div
+        style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}
+      >
         <BrandIcons.IconGithub size={48} />
         <span style={{ fontSize: "0.75rem" }}>GitHub</span>
       </div>
