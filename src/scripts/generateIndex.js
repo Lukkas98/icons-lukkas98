@@ -42,8 +42,16 @@ function generateIndexes() {
 
       if (exports.length > 0) {
         const indexPath = path.join(dirPath, "index.ts");
-        fs.writeFileSync(indexPath, exports.join("\n") + "\n");
-        console.log(`✅ index.ts generado en: components/${dir.name} (${exports.length} líneas)`);
+        const indexContent = exports.join("\n") + "\n";
+
+        if (fs.existsSync(indexPath) && fs.readFileSync(indexPath, "utf-8") === indexContent) {
+          console.log(`⏭️ index.ts de components/${dir.name} ya está actualizado; se omite`);
+        } else {
+          fs.writeFileSync(indexPath, indexContent);
+          console.log(
+            `✅ index.ts generado en: components/${dir.name} (${exports.length} exportaciones)`
+          );
+        }
       } else {
         console.warn(`⚠️ No hay archivos válidos en components/${dir.name}`);
       }
