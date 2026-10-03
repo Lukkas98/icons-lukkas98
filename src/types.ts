@@ -3,6 +3,7 @@ import { SVGProps } from "react";
 export interface IconProps extends SVGProps<SVGSVGElement> {
   /**
    * Tamaño del icono en pixels o unidades CSS (aplica a width y height)
+   * Las props width y height explícitas tienen prioridad sobre size.
    * @example size={24} // 24px
    * @example size="1.5rem" // 1.5rem
    */

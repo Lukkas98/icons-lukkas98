@@ -30,28 +30,37 @@
     }
   },
   "scripts": {
-    "build": "npm run build:icons",
-    "build:icons": "node src/scripts/buildIcons.js && node src/scripts/generateIndex.js && tsc",
-    "dev": "node --watch src/scripts/buildIcons.js",
+    "build": "pnpm run build:icons",
+    "build:icons": "node --input-type=module -e \"import { rm } from 'node:fs/promises'; await rm('dist', { recursive: true, force: true })\" && pnpm run icons:generate && tsc",
+    "icons:generate": "node src/scripts/buildIcons.js && node src/scripts/generateIndex.js",
+    "dev": "pnpm run icons:generate && node --watch src/scripts/buildIcons.js",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write src",
-    "test": "vitest",
-    "test:watch": "vitest --watch",
-    "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "storybook": "pnpm run icons:generate && storybook dev -p 6006",
+    "storybook:build": "pnpm run icons:generate && storybook build",
+    "test": "pnpm run icons:generate && vitest",
+    "test:watch": "pnpm run icons:generate && vitest --watch",
+    "test:ui": "pnpm run icons:generate && vitest --ui",
+    "test:coverage": "pnpm run icons:generate && vitest --coverage"
   },
   "peerDependencies": {
     "react": ">=19"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@storybook/addon-docs": "^8.6.14",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/builder-vite": "^8.6.14",
+    "@storybook/react": "^8.6.14",
+    "@storybook/react-vite": "^8.6.14",
     "@svgr/cli": "^8.1.0",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",
     "@testing-library/react": "^16.3.2",
     "@types/eslint": "^9.6.1",
+    "@types/node": "^26.6.4",
     "@types/react": ">=19",
     "@typescript-eslint/eslint-plugin": "^8.59.4",
     "@typescript-eslint/parser": "^8.59.4",
@@ -65,6 +74,7 @@
     "prettier": "^3.8.3",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
+    "storybook": "^8.6.14",
     "typescript": "^5.9.3",
     "vitest": "^4.1.7"
   },

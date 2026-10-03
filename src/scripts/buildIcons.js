@@ -58,11 +58,15 @@ async function processIcons(type) {
           expandProps: "end",
           template: (variables, { tpl }) => {
             return tpl`
+              import { cloneElement } from "react";
               import type { IconProps } from "../../types";
 
-              export const ${finalName} = (props: IconProps) => (
-                ${variables.jsx}
-              );
+              export const ${finalName} = ({ size, ...props }: IconProps) =>
+                cloneElement(${variables.jsx}, {
+                  width: size ?? "1em",
+                  height: size ?? "1em",
+                  ...props,
+                });
             `;
           },
           replaceAttrValues: replaceColor ? { "#292D32": "currentColor" } : {},

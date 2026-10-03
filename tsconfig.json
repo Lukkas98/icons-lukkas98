@@ -11,5 +11,6 @@
     "moduleResolution": "Bundler",
     "strict": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/**/*.stories.tsx", "src/**/__tests__/**"]
 }

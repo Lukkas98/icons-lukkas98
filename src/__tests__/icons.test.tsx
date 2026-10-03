@@ -24,4 +24,16 @@ describe("Icon Components", () => {
     const component = IconArrowBadgeDown({ style });
     expect(component.props.style).toEqual(style);
   });
+
+  it("should apply size to width and height", () => {
+    const component = IconArrowBadgeDown({ size: 32 });
+    expect(component.props.width).toBe(32);
+    expect(component.props.height).toBe(32);
+  });
+
+  it("should allow explicit dimensions to override size", () => {
+    const component = IconArrowBadgeDown({ size: 32, width: 48 });
+    expect(component.props.width).toBe(48);
+    expect(component.props.height).toBe(32);
+  });
 });
