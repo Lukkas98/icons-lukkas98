@@ -20,7 +20,7 @@ function generateIndexes() {
   const directories = entries.filter((entry) => entry.isDirectory());
 
   if (directories.length === 0) {
-    console.warn("⚠️  No directories found in components folder");
+    console.warn("⚠️ No se encontraron directorios en la carpeta de componentes");
     return;
   }
 
@@ -43,17 +43,17 @@ function generateIndexes() {
       if (exports.length > 0) {
         const indexPath = path.join(dirPath, "index.ts");
         fs.writeFileSync(indexPath, exports.join("\n") + "\n");
-        console.log(`✅ Generated index.ts in: components/${dir.name} (${exports.length} exports)`);
+        console.log(`✅ index.ts generado en: components/${dir.name} (${exports.length} líneas)`);
       } else {
-        console.warn(`⚠️  No valid files found in components/${dir.name}`);
+        console.warn(`⚠️ No hay archivos válidos en components/${dir.name}`);
       }
     } catch (err) {
-      console.error(`❌ Error processing ${dir.name}:`, err.message);
+      console.error(`❌ Error al procesar ${dir.name}:`, err.message);
       process.exit(1);
     }
   });
 
-  console.log("✨ Index generation completed successfully!");
+  console.log("✨ La generación de índices se completó correctamente!");
 }
 
 generateIndexes();

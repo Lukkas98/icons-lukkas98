@@ -25,7 +25,7 @@ async function processIcons(type) {
   try {
     await fs.access(input);
   } catch {
-    throw new Error(`❌ Input folder not found: ${input}`);
+    throw new Error(`❌ No se encontró la carpeta de entrada: ${input}`);
   }
 
   await fs.mkdir(output, { recursive: true });
@@ -34,7 +34,7 @@ async function processIcons(type) {
   const svgFiles = files.filter((f) => f.endsWith(".svg"));
 
   if (svgFiles.length === 0) {
-    console.warn(`⚠️  No SVG files found in ${input}`);
+    console.warn(`⚠️ No se encontraron archivos SVG en ${input}`);
     return;
   }
 
@@ -78,7 +78,7 @@ async function processIcons(type) {
       await fs.writeFile(path.join(output, `${baseName}.tsx`), jsCode);
       console.log(`✅ ${finalName} generado`);
     } catch (err) {
-      console.error(`❌ Error procesando ${file}:`, err.message);
+      console.error(`❌ Error al procesar ${file}:`, err.message);
       throw err;
     }
   }
@@ -89,7 +89,7 @@ async function run() {
     console.log("🚀 Generando iconos...");
     await processIcons("ui");
     await processIcons("brands");
-    console.log("✨ ¡Componentes creados exitosamente!");
+    console.log("✨ ¡Componentes creados correctamente!");
   } catch (err) {
     console.error("❌ Error:", err.message);
     process.exit(1);
